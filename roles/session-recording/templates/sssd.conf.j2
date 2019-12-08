@@ -1,0 +1,6 @@
+[domain/local]
+id_provider = files
+
+[sssd]
+domains = {{ recordDomain }}
+services = nss, pam, ssh, sudo

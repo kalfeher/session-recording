@@ -1,0 +1,35 @@
+---
+  - name: Check sssd conf file
+    stat:
+      path: "{{ sssdConf }}"
+    register: sssdfile
+
+  - name: sssd.conf not present. Adding a basic file
+    template:
+      src: sssd.conf.j2
+      dest: "{{ sssdConf }}"
+      mode: 0600
+    tags: sssd
+    notify: restart sssd
+    when: sssdfile.stat.exists == False
+
+  - name: sssd.conf present. Adding session recording lines.
+    ini_file:
+      path: "{{ sssdConf }}"
+      section: sssd
+      option: domains
+      value: "{{ recordDomain }}"
+      option: services
+      value: "{{ recordServices }}"
+      backup: yes
+    tags: sssd
+    notify: restart sssd
+    when: sssdfile.stat.exists == True
+
+  - name: Adding session recording conf file
+    template:
+      src: sssd-session-recording.conf.j2
+      dest: /etc/sssd/conf.d/sssd-session-recording.conf
+      mode: 0600
+    tags: sssd
+    notify: restart sssd

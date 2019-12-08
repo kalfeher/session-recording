@@ -1,0 +1,11 @@
+---
+  galaxy_info:
+    role_name: session-recording
+    author: Kal Feher
+    description: Set up session recording for RHEL based OS
+
+    license: GPL v2
+    min_ansible_version: 2.0
+  #  galaxy_tags: []
+
+  #dependancies: []

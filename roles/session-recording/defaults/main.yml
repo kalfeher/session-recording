@@ -1,0 +1,5 @@
+---
+  sssdConf: "/etc/sssd/sssd.conf"
+  recordScope: all
+  recordDomain: local
+  recordServices: "nss, pam, ssh, sudo"
