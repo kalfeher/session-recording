@@ -1,4 +1,10 @@
 ---
+    # install required applications
+  - name: Install recording application list
+    yum:
+      name: "{{ applications }}"
+      state: latest
+
   - name: Check sssd conf file
     stat:
       path: "{{ sssdConf }}"
