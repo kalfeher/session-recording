@@ -4,7 +4,7 @@
     author: Kal Feher
     description: Set up session recording for RHEL based OS
 
-    license: GPL v2
+    license: GPL v3
     min_ansible_version: 2.0
   #  galaxy_tags: []
 
